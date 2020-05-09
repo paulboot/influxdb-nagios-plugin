@@ -42,12 +42,12 @@ Use pip:
 	Command line entry point. Defines common arguments.
 
 	Options:
-	  -v, --verbose
+	  -v, --verbose               Can be specified multiple times for increasing verbosity
 	  --hostname TEXT             InfluxDB hostname
 	  --port INTEGER              InfluxDB port
 	  --username TEXT             InfluxDB usernanme
 	  --password TEXT             InfluxDB password
-	  --database TEXT             InfluxDB database name
+	  --database TEXT             InfluxDB database name, default 'telegraf'
 	  --count-error-range TEXT    Range of measurement counts that are NOT
 								  considered an error
 	  --count-warning-range TEXT  Range of measurement counts that are NOT
