@@ -43,7 +43,7 @@ class Measurements(Resource):
         Query InfluxDB; yield the count and mean of the measurements.
         """
         def get_value(result):
-            for key, value in result.iteritems():
+            for key, value in result.items():
                 if key != "time":
                     return value
 

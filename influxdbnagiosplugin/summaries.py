@@ -18,7 +18,7 @@ class MeasurementValuesSummary(Summary):
         self.query = query
 
     def ok(self, results):
-        result = filter(is_values, results)[0]
+        result = next(filter(is_values, results))
         return "{} is {}".format(
             self.query.measurements[0] if self.query.measurements else "result",
             result.metric.value,
