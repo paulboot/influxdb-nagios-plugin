@@ -15,12 +15,12 @@ from influxdbnagiosplugin.summaries import MeasurementValuesSummary
 
 
 @group(chain=True)
-@option("-v", "--verbose", count=True)
+@option("-v", "--verbose", count=True, help="Can be specified multiple times for increasing verbosity")
 @option("--hostname", default="localhost", help="InfluxDB hostname")
 @option("--port", default=8086, help="InfluxDB port")
 @option("--username", default="influxdb", help="InfluxDB usernanme")
 @option("--password", default="secret", help="InfluxDB password")
-@option("--database", default="telegraf", help="InfluxDB database name")
+@option("--database", default="telegraf", help="InfluxDB database name, default \'telegraf\'")
 @option("--count-error-range", default="1:", help="Range of measurement counts that are NOT considered an error")  # noqa
 @option("--count-warning-range", default="2:", help="Range of measurement counts that are NOT considered a warning")  # noqa
 @option("--mean-error-range", default="", help="Range of measurement means that are NOT considered an error")  # noqa
