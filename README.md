@@ -54,7 +54,7 @@ Use pip:
 								  considered a warning
 	  --mean-error-range TEXT     Range of measurement means that are NOT
 								  considered an error
-	  --mean-warning-range TEXT   Range of measurement counts that are NOT
+	  --mean-warning-range TEXT   Range of measurement means that are NOT
 								  considered a warning
 	  --timeout INTEGER           Timeout in seconds for connecting to InfluxDB
 	  --help                      Show this message and exit.

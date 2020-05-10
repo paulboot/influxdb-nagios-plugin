@@ -24,7 +24,7 @@ from influxdbnagiosplugin.summaries import MeasurementValuesSummary
 @option("--count-error-range", default="1:", help="Range of measurement counts that are NOT considered an error")  # noqa
 @option("--count-warning-range", default="2:", help="Range of measurement counts that are NOT considered a warning")  # noqa
 @option("--mean-error-range", default="", help="Range of measurement means that are NOT considered an error")  # noqa
-@option("--mean-warning-range", default="", help="Range of measurement counts that are NOT considered a warning")  # noqa
+@option("--mean-warning-range", default="", help="Range of measurement means that are NOT considered a warning")  # noqa
 @option("--timeout", default=5, help="Timeout in seconds for connecting to InfluxDB")
 def main(**kwargs):
     """
