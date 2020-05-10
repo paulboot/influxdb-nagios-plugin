@@ -41,7 +41,7 @@ Use pip:
 
 	Command line entry point. Defines common arguments.
 
-	Options:
+	Options 1:
 	  -v, --verbose               Can be specified multiple times for increasing verbosity
 	  --hostname TEXT             InfluxDB hostname
 	  --port INTEGER              InfluxDB port
@@ -63,20 +63,20 @@ Use pip:
 	  query   Run an explicit query.
 	  single  Run a query for a single measurement.
 
-	check-measurement [OPTIONS] single [OPTIONS] MEASUREMENT HOSTNAME
+	check-measurement [OPTIONS1] single [OPTIONS2] MEASUREMENT HOSTNAME
 
 	  Run a query for a single measurement.
 
-	Options:
+	Options 2:
 	  --age TEXT
 	  --where TEXT  Extra where conditions to include.
 	  --field TEXT
 	  --help        Show this message and exit.
 
 
-	Usage: check-measurement query [OPTIONS] QUERY
+	Usage: check-measurement [OPTIONS1] query [OPTIONS3] QUERY
 
 	  Run an explicit query.
 
-	Options:
+	Options 3:
 	  --help  Show this message and exit.
