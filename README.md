@@ -83,30 +83,22 @@ Use pip:
 ## Examples
 
 ### Run a query for a single measurement
-
 Run a query for a `cpu` measurement `cpu-total`  the field value `usage_iowait` filtered for host `yourhost`.The options used  before the `single` command and after the `single` command can not be switched.
 
-```shell
-$./check-measurement --mean-error-range 10 --mean-warning-range 5 single --field usage_iowait --where cpu='cpu-total' --age 2m cpu yourhost
-```
+    $./check-measurement --mean-error-range 10 --mean-warning-range 5 single \
+    --field usage_iowait --where cpu='cpu-total' --age 2m cpu yourhost
 
 Output:
 
-```shell
-MEASUREMENTS OK - cpu is [0.2507941815741449, 0.21819402484046085, 0.19283977530009686, 0.3185247275776435] | count=4;2:;1: mean=0.24508817732308652;5;10
-```
+    MEASUREMENTS OK - cpu is [0.2507941815741449, 0.21819402484046085, 0.19283977530009686, 0.3185247275776435] | count=4;2:;1: mean=0.24508817732308652;5;10
 
 ### Run an explicit query
-
 Run an explicit query `SELECT time, usage_iowait FROM cpu WHERE time > now() - 2m AND host = 'mo4' AND cpu = 'cpu-total'` 
 
-```shell
-$./check-measurement --mean-error-range 10 --mean-warning-range 5 query "SELECT time, usage_iowait FROM cpu WHERE time > now() - 2m AND host = 'yourhost' AND cpu = 'cpu-total'"
-```
+    $./check-measurement --mean-error-range 10 --mean-warning-range 5 query \
+    "SELECT time, usage_iowait FROM cpu WHERE time > now() - 2m AND host = 'yourhost' AND cpu = 'cpu-total'"
 
 Output:
 
-```shell
-MEASUREMENTS OK - cpu is [0.2507941815741449, 0.21819402484046085, 0.19283977530009686, 0.3185247275776435] | count=4;2:;1: mean=0.24508817732308652;5;10
-```
+    MEASUREMENTS OK - cpu is [0.2507941815741449, 0.21819402484046085, 0.19283977530009686, 0.3185247275776435] | count=4;2:;1: mean=0.24508817732308652;5;10
 
