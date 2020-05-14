@@ -37,10 +37,10 @@ Use pip:
 
 ## Usage
 
-	Usage: check-measurement [OPTIONS] COMMAND1 [ARGS]...
-
+	Usage: check-measurement [OPTIONS1] COMMAND [OPTIONS2|OPTIONS3]...
+	
 	Command line entry point. Defines common arguments.
-
+	
 	Options 1:
 	  -v, --verbose               Can be specified multiple times for increasing verbosity
 	  --hostname TEXT             InfluxDB hostname
@@ -58,25 +58,55 @@ Use pip:
 								  considered a warning
 	  --timeout INTEGER           Timeout in seconds for connecting to InfluxDB
 	  --help                      Show this message and exit.
-
+	
 	Commands:
 	  query   Run an explicit query.
 	  single  Run a query for a single measurement.
-
-	check-measurement [OPTIONS1] single [OPTIONS2] MEASUREMENT HOSTNAME
-
+	
+	Usage1: check-measurement [OPTIONS1] single [OPTIONS2] MEASUREMENT HOSTNAME
+	
 	  Run a query for a single measurement.
-
+	
 	Options 2:
 	  --age TEXT
 	  --where TEXT  Extra where conditions to include.
 	  --field TEXT
 	  --help        Show this message and exit.
-
-
-	Usage: check-measurement [OPTIONS1] query [OPTIONS3] QUERY
-
+	
+	Usage2 : check-measurement [OPTIONS1] query [OPTIONS3] QUERY
+	
 	  Run an explicit query.
-
+	
 	Options 3:
 	  --help  Show this message and exit.
+
+## Examples
+
+### Run a query for a single measurement
+
+Run a query for a `cpu` measurement `cpu-total`  the field value `usage_iowait` filtered for host `yourhost`.The options used  before the `single` command and after the `single` command can not be switched.
+
+```shell
+$./check-measurement --mean-error-range 10 --mean-warning-range 5 single --field usage_iowait --where cpu='cpu-total' --age 2m cpu yourhost
+```
+
+Output:
+
+```shell
+MEASUREMENTS OK - cpu is [0.2507941815741449, 0.21819402484046085, 0.19283977530009686, 0.3185247275776435] | count=4;2:;1: mean=0.24508817732308652;5;10
+```
+
+### Run an explicit query
+
+Run an explicit query `SELECT time, usage_iowait FROM cpu WHERE time > now() - 2m AND host = 'mo4' AND cpu = 'cpu-total'` 
+
+```shell
+$./check-measurement --mean-error-range 10 --mean-warning-range 5 query "SELECT time, usage_iowait FROM cpu WHERE time > now() - 2m AND host = 'yourhost' AND cpu = 'cpu-total'"
+```
+
+Output:
+
+```shell
+MEASUREMENTS OK - cpu is [0.2507941815741449, 0.21819402484046085, 0.19283977530009686, 0.3185247275776435] | count=4;2:;1: mean=0.24508817732308652;5;10
+```
+
